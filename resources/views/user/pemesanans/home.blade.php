@@ -37,14 +37,11 @@
                         <a class="nav-link" aria-current="page" href="#fasilitas">Fasilitas</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" aria-current="page" href="{{ url('book') }}">Book</a>
+                      <a class="nav-link" aria-current="page">|</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" aria-current="page">|</a>
-                </li>
-                  <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="{{ url('login') }}">Admin</a>
-                </li>
+                    <li class="nav-item">
+                      <a class="nav-link" aria-current="page" href="{{ url('login') }}">Book</a>
+                  </li>
                 </ul>
             </div>
         </div>
@@ -54,7 +51,7 @@
     <!-- Image -->
     <div class="text-center mt-5">
         <img style="width: 1000px;" src="assets/img/Home.jpg" class="rounded" alt="assets/img/no_image.png">
-        <a href="{{ url('book') }}"><div class="d-grid gap-2 col-8 mx-auto">
+        <a href="{{ url('login') }}"><div class="d-grid gap-2 col-8 mx-auto">
             <button class="btn btn-primary mt-3 fs-6" type="button"><b>Book</b></button>
           </div></a>
       </div>

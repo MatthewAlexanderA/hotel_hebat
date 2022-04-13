@@ -32,9 +32,10 @@ active
         <div class="col-xs-12 col-sm-12 col-md-12 mt-3">
             <div class="form-group">
                 <strong>Password:</strong>
-                <input type="text" name="password" class="form-control" placeholder="Password" value="{{$resepsioniss->password}}">
+                <input type="text" name="password" class="form-control" placeholder="Password" value="">
             </div>
         </div>
+        <input type="hidden" name="role" class="form-control" placeholder="Password" value="{{$resepsioniss->role}}">
         <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-5">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>

@@ -1,11 +1,15 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ResepsionisController;
 use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\TipeKamarController;
 use App\Http\Controllers\FasilitasKamarController;
-
+use App\Http\Controllers\PemesananController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use Illuminate\Auth\Events\Logout;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,20 +23,28 @@ use App\Http\Controllers\FasilitasKamarController;
 */
 
 Route::get('/', function () {
-    return view('user.home');
-});
-
-Route::get('/book', function () {
-    return view('user.pesan');
+    return view('user.pemesanans.home');
 });
 Route::get('/home', function () {
-    return view('user.home');
-});
-Route::get('/login', function () {
-    return view('login');
+    return view('user.pemesanans.home');
 });
 
-Route::resource('tipekamars', TipeKamarController::class);
-Route::resource('fasilitaskamars', FasilitasKamarController::class);
-Route::resource('fasilitass', FasilitasController::class);
-Route::resource('resepsioniss', ResepsionisController::class);
+Route::get('/resepsionis', function () {
+    return view('resepsionis.index');
+});
+
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authentication'])->name('authentication');
+Route::post('/logout', [LoginController::class, 'logout']);
+
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store']);
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('logout')->middleware('auth');
+
+Route::resource('pemesanans', PemesananController::class)->middleware('auth');
+
+Route::resource('tipekamars', TipeKamarController::class)->middleware('admin');
+Route::resource('fasilitaskamars', FasilitasKamarController::class)->middleware('admin');
+Route::resource('fasilitass', FasilitasController::class)->middleware('admin');
+Route::resource('resepsioniss', ResepsionisController::class)->middleware('admin');

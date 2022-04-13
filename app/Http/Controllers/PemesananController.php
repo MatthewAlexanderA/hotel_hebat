@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pemesanan;
+use App\Models\TipeKamar;
 use Illuminate\Http\Request;
 
 class PemesananController extends Controller
@@ -14,7 +15,8 @@ class PemesananController extends Controller
      */
     public function index()
     {
-        //
+        $tipekamars = TipeKamar::all();
+        return view('user.pemesanans.pemesanan', compact('tipekamars', $tipekamars));
     }
 
     /**
@@ -24,7 +26,8 @@ class PemesananController extends Controller
      */
     public function create()
     {
-        //
+        $tipekamars = TipeKamar::all();
+        return view('user.pemesanans.pemesanan', compact('tipekamars', $tipekamars));
     }
 
     /**
@@ -35,7 +38,20 @@ class PemesananController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama_pemesan' => 'required',
+            'email' => 'required',
+            'no_hp' => 'required',
+            'nama_tamu' => 'required',
+            'tgl_check_in' => 'required',
+            'tgl_check_out' => 'required',
+            'tipe_kamar' => 'required',
+            'jumlah_kamar' => 'required',
+        ]);
+
+        Pemesanan::create($request->all());
+
+        return redirect()->route('pemesanans.struk');
     }
 
     /**
@@ -44,9 +60,8 @@ class PemesananController extends Controller
      * @param  \App\Models\Pemesanan  $pemesanan
      * @return \Illuminate\Http\Response
      */
-    public function show(Pemesanan $pemesanan)
+    public function show(Pemesanan $pemesanans)
     {
-        //
     }
 
     /**
@@ -55,9 +70,9 @@ class PemesananController extends Controller
      * @param  \App\Models\Pemesanan  $pemesanan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pemesanan $pemesanan)
+    public function edit(Pemesanan $pemesanans)
     {
-        //
+        return view('user.pemesanans.struk', compact('pemesanan'));
     }
 
     /**

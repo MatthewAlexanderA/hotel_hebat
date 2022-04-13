@@ -31,13 +31,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#home">Resepsionis</a>
+                        <a class="nav-link active" aria-current="page" href="#home">{{ auth()->user()->username }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page"> | </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#"><i class="fa fa-user"></i> Username </i></a>
+                        <form action="/logout" method="post">
+                            @csrf
+                            <button style="border: 0; background-color: white;" type="submit" class="nav-link active" aria-current="page">Logout</button>
+                        </form>
                     </li>
                 </ul>
             </div>

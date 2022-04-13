@@ -52,6 +52,24 @@
     </nav>
     <!-- Navbar -->
 
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
+    <br>
+        @if ($message = Session::get('success'))
+        <div class="alert alert-success mt-2">
+            <p>{{ $message }}</p>
+        </div>
+        @endif
+
     <!-- Order Form -->
     <section id="pesan" class="pt-2">
         <div class="container">
@@ -60,44 +78,47 @@
                     <h2>Form Pemesanan</h2>
                 </div>
                 <div class="row justify-content-center">
-                    <form class="row g-3">
+                    <form class="row g-3" action="{{ route('pemesanans.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+
                         <div class="col-md-6">
                             <label for="tgl_cek_in" class="form-label">Tanggal Cek In</label>
-                            <input type="date" class="form-control" id="tgl_cek_in">
+                            <input type="date" class="form-control" id="tgl_cek_in" name="tgl_check_in">
                         </div>
                         <div class="col-md-6">
                             <label for="tgl_cek_out" class="form-label">Tanggal Cek Out</label>
-                            <input type="date" class="form-control" id="tgl_cek_out">
+                            <input type="date" class="form-control" id="tgl_cek_out" name="tgl_check_out">
                         </div>
                         <div class="col-12">
                             <label for="nama" class="form-label">Nama Pemesan</label>
-                          <input type="text" class="form-control" id="nama" placeholder="">
+                          <input type="text" class="form-control" id="nama" placeholder="" name="nama_pemesan">
                         </div>
                         <div class="col-12">
                           <label for="email" class="form-label">Email</label>
-                          <input type="email" class="form-control" id="email" placeholder="example@example.com">
+                          <input type="email" class="form-control" id="email" placeholder="example@example.com" name="email">
                         </div>
                         <div class="col-12">
                             <label for="telp" class="form-label">No Handphone</label>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon3">+62</span>
-                                    <input type="text" class="form-control" id="telp" aria-describedby="basic-addon3">
+                                    <input type="text" class="form-control" id="telp" aria-describedby="basic-addon3" name="no_hp">
                                 </div>
                           </div>
                         <div class="col-md-6">
                           <label for="tamu" class="form-label">Nama Tamu</label>
-                          <input type="text" class="form-control" id="tamu">
+                          <input type="text" class="form-control" id="tamu" name="nama_tamu">
                         </div>
                         <div class="col-md-4">
                           <label for="tipe" class="form-label">Tipe Kamar</label>
-                          <select id="tipe" class="form-select">
-                            <option selected>Deluxe</option>
-                            <option>Superior</option>
-                          </select>
+                          <select class="form-control" name="tipe_kamar">
+                            @foreach($tipekamars as $tipekamar)
+                            <option value="{{$tipekamar->tipe_kamar}}">{{$tipekamar->tipe_kamar}}</option>
+                            @endforeach
+                        </select>
                         </div>
                         <div class="col-md-2">
                           <label for="jumlah" class="form-label">Jumlah Kamar</label>
-                          <input type="number" class="form-control" id="jumlah">
+                          <input type="number" class="form-control" id="jumlah" name="jumlah_kamar">
                         </div>
                         <div class="col-12">
                             <div class="d-grid gap-2 col-12 mx-auto">

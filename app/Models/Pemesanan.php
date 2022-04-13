@@ -9,5 +9,5 @@ class Pemesanan extends Model
 {
     use HasFactory;
     protected $table = 'pemesanans';
-    protected $fillable = ['id', 'nama_pemesan', 'email', 'no_hp', 'nama_tamu', 'tipe_kamar'];
+    protected $fillable = ['id', 'nama_pemesan', 'email', 'no_hp', 'nama_tamu', 'tgl_check_in', 'tgl_check_out', 'tipe_kamar', 'jumlah_kamar'];
 }

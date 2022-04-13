@@ -28,7 +28,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" >Admin</a>
+                        <a class="nav-link active" aria-current="page" >{{ auth()->user()->username }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" >|</a>
@@ -44,6 +44,15 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link @yield('resepsionis')" aria-current="page" href="{{ url('resepsioniss') }}">Resepsionis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" >|</a>
+                    </li>
+                    <li class="nav-item">
+                        <form action="/logout" method="post">
+                            @csrf
+                            <button style="border: 0; background-color: white;" type="submit" class="nav-link active" aria-current="page">Logout</button>
+                        </form>
                     </li>
                 </ul>
             </div>

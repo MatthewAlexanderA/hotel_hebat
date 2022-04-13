@@ -32,6 +32,7 @@ active
                 <input type="text" name="password" class="form-control" placeholder="Password">
             </div>
         </div>
+        <input type="hidden" name="role" class="form-control" value="resepsionis">
         <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-5">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>

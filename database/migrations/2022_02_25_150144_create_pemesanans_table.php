@@ -19,7 +19,10 @@ return new class extends Migration
             $table->string('email');
             $table->integer('no_hp');
             $table->string('nama_tamu');
+            $table->date('tgl_check_in');
+            $table->date('tgl_check_out');
             $table->string('tipe_kamar');
+            $table->string('jumlah_kamar');
             $table->timestamps();
         });
     }

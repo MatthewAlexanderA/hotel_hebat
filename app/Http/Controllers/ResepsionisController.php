@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Resepsionis;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ResepsionisController extends Controller
@@ -14,7 +14,7 @@ class ResepsionisController extends Controller
      */
     public function index()
     {
-        $resepsioniss = Resepsionis::latest()->paginate(150);
+        $resepsioniss = User::latest()->paginate(150);
 
         return view('admin.resepsioniss.index', compact('resepsioniss'))
             ->with('i', (request()->input('page', 1) - 1) * 150);
@@ -41,9 +41,12 @@ class ResepsionisController extends Controller
         $request->validate([
             'username' => 'required',
             'password' => 'required',
+            'role' => 'required'
         ]);
 
-        Resepsionis::create($request->all());
+        $request['password'] = bcrypt($request['password']);
+
+        User::create($request->all());
 
         return redirect()->route('resepsioniss.index')
             ->with('success', 'Add Success!');
@@ -55,7 +58,7 @@ class ResepsionisController extends Controller
      * @param  \App\Models\Resepsionis  $resepsionis
      * @return \Illuminate\Http\Response
      */
-    public function show(Resepsionis $resepsionis)
+    public function show(User $resepsionis)
     {
         //
     }
@@ -66,7 +69,7 @@ class ResepsionisController extends Controller
      * @param  \App\Models\Resepsionis  $resepsionis
      * @return \Illuminate\Http\Response
      */
-    public function edit(Resepsionis $resepsioniss)
+    public function edit(User $resepsioniss)
     {
         return view('admin.resepsioniss.edit', compact('resepsioniss'));
     }
@@ -78,12 +81,15 @@ class ResepsionisController extends Controller
      * @param  \App\Models\Resepsionis  $resepsionis
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Resepsionis $resepsioniss)
+    public function update(Request $request, User $resepsioniss)
     {
         $request->validate([
-            'username' => 'required',
+            'username' => 'required', 'unique:resepsioniss',
             'password' => 'required',
+            'role' => 'required',
         ]);
+
+        $request['password'] = bcrypt($request['password']);
 
         $resepsioniss->update($request->all());
 
@@ -97,7 +103,7 @@ class ResepsionisController extends Controller
      * @param  \App\Models\Resepsionis  $resepsionis
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Resepsionis $resepsioniss)
+    public function destroy(User $resepsioniss)
     {
         $resepsioniss->delete();
 
