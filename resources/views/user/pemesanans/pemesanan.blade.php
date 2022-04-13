@@ -1,56 +1,10 @@
-<!doctype html>
-<html lang="en">
+@extends('user.layout')
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@section('book')
+active
+@endsection
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
-
-    <title>Book | Hotel Hebat</title>
-</head>
-
-<body id="home" class="pt-5">
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light shadow-sm fixed-top" style="background-color: #ffffff;">
-        <div class="container">
-            <a class="navbar-brand" href="#">Hotel Hebat</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{ url('home#home') }}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{ url('home#kamar') }}">Kamar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{ url('home#fasilitas') }}">Fasilitas</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="#">Book</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" aria-current="page">|</a>
-                </li>
-                  <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="{{ url('login') }}">Admin</a>
-                </li>
-                </ul>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!-- Navbar -->
+@section('content')
 
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -89,10 +43,7 @@
                             <label for="tgl_cek_out" class="form-label">Tanggal Cek Out</label>
                             <input type="date" class="form-control" id="tgl_cek_out" name="tgl_check_out">
                         </div>
-                        <div class="col-12">
-                            <label for="nama" class="form-label">Nama Pemesan</label>
-                          <input type="text" class="form-control" id="nama" placeholder="" name="nama_pemesan">
-                        </div>
+                          <input type="hidden" class="form-control" id="nama" placeholder="" name="nama_pemesan" value="{{ auth()->user()->username }}">
                         <div class="col-12">
                           <label for="email" class="form-label">Email</label>
                           <input type="email" class="form-control" id="email" placeholder="example@example.com" name="email">
@@ -139,5 +90,4 @@
     </footer>
     <!-- Footer -->
 
-</body>
-</html>
+@endsection

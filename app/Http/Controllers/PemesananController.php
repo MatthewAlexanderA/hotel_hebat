@@ -15,8 +15,10 @@ class PemesananController extends Controller
      */
     public function index()
     {
-        $tipekamars = TipeKamar::all();
-        return view('user.pemesanans.pemesanan', compact('tipekamars', $tipekamars));
+        $pemesanans = Pemesanan::where('nama_pemesan', auth()->user()->username)->latest()->paginate(150);
+
+        return view('user.pemesanans.history', compact('pemesanans'))
+            ->with('i', (request()->input('page', 1) - 1) * 150);
     }
 
     /**
@@ -51,7 +53,7 @@ class PemesananController extends Controller
 
         Pemesanan::create($request->all());
 
-        return redirect()->route('pemesanans.struk');
+        return view('user.dashboard');
     }
 
     /**
@@ -70,7 +72,7 @@ class PemesananController extends Controller
      * @param  \App\Models\Pemesanan  $pemesanan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pemesanan $pemesanans)
+    public function edit(Pemesanan $pemesanan)
     {
         return view('user.pemesanans.struk', compact('pemesanan'));
     }

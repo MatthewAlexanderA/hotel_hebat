@@ -8,48 +8,49 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container">
+    <div class="container" style="width: 38%">
         <div style="text-align: center">
             <h4><b>Hotel Hebat</b></h4><br>
             <p>Jl. Raya Kopo No.399, Kb. Lega, Kec. Bojongloa Kidul, Kota Bandung, Jawa Barat 40223</p>
         </div>
-        <div class="table">
+        <div class="">
             <table>
-                <th>
-                    <td>Nama Pemesan: </td>
+                <tr>
+                    <td>Nama Pemesan </td><td> : &nbsp;&nbsp;&nbsp;&nbsp;</td>
                     <td>{{$pemesanan->nama_pemesan}}</td>
-                </th>
-                <th>
-                    <td>Nama Tamu: </td>
+                </tr>
+                <tr>
+                    <td>Nama Tamu </td><td> : &nbsp;&nbsp;&nbsp;&nbsp;</td>
                     <td>{{$pemesanan->nama_tamu}}</td>
-                </th>
-                <th>
-                    <td>Email: </td>
+                </tr>
+                <tr>
+                    <td>Email </td><td> : &nbsp;&nbsp;&nbsp;&nbsp;</td>
                     <td>{{$pemesanan->email}}</td>
-                </th>
-                <th>
-                    <td>No Hp: </td>
+                </tr>
+                <tr>
+                    <td>No Hp </td><td> : &nbsp;&nbsp;&nbsp;&nbsp;</td>
                     <td>{{$pemesanan->no_hp}}</td>
-                </th>
-                <th>
-                    <td>Tanggal Cek In: </td>
-                    <td>{{$reservasis->tgl_check_in}}</td>
-                </th>
-                <th>
-                    <td>Tanggal Cek Out: </td>
-                    <td>{{$reservasis->tgl_check_out}}</td>
-                </th>
-                <th>
-                    <td>Tipe Kamar: </td>
+                </tr>
+                <tr>
+                    <td>Tanggal Cek In </td><td> : &nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td>{{$pemesanan->tgl_check_in}}</td>
+                </tr>
+                <tr>
+                    <td>Tanggal Cek Out </td><td> : &nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td>{{$pemesanan->tgl_check_out}}</td>
+                </tr>
+                <tr>
+                    <td>Tipe Kamar </td><td> : &nbsp;&nbsp;&nbsp;&nbsp;</td>
                     <td>{{$pemesanan->tipe_kamar}}</td>
-                </th>
-                <th>
-                    <td>Jumlah Kamar: </td>
+                </tr>
+                <tr>
+                    <td>Jumlah Kamar </td><td> : &nbsp;&nbsp;&nbsp;&nbsp;</td>
                     <td>{{$pemesanan->jumlah_kamar}}</td>
-                </th>
+                </tr>
             </table>
+            <br>
         </div>
-        <a href="/home"></a><button type="button" class="btn btn-danger">Back</button>
+        <a href="{{ url('dashboard') }}"><button type="button" class="btn btn-danger">Back</button></a>
     </div>
 </body>
 </html>

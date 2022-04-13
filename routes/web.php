@@ -7,6 +7,7 @@ use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\TipeKamarController;
 use App\Http\Controllers\FasilitasKamarController;
 use App\Http\Controllers\PemesananController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Auth\Events\Logout;
@@ -43,6 +44,7 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('logout')->middleware('auth');
 
 Route::resource('pemesanans', PemesananController::class)->middleware('auth');
+Route::resource('history', HistoryController::class)->middleware('auth');
 
 Route::resource('tipekamars', TipeKamarController::class)->middleware('admin');
 Route::resource('fasilitaskamars', FasilitasKamarController::class)->middleware('admin');

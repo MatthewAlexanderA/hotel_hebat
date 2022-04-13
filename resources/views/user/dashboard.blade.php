@@ -1,6 +1,5 @@
-{{ auth()->user()->username }}
+@extends('user.layout')
 
-<form action="/logout" method="post">
-@csrf
-<button type="submit">Logout</button>
-</form>
+@section('content')
+
+@endsection

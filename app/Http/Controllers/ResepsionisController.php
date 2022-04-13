@@ -14,7 +14,7 @@ class ResepsionisController extends Controller
      */
     public function index()
     {
-        $resepsioniss = User::latest()->paginate(150);
+        $resepsioniss = User::where('role', 'resepsionis')->latest()->paginate(150);
 
         return view('admin.resepsioniss.index', compact('resepsioniss'))
             ->with('i', (request()->input('page', 1) - 1) * 150);
