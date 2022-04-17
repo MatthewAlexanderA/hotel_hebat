@@ -33,14 +33,8 @@ active
                   <td>{{ $pemesanan->tgl_check_in }}</td>
                   <td>{{ $pemesanan->tgl_check_out }}</td>
                   <td>
-                    <form action="{{ route('pemesanans.destroy',$pemesanan->id) }}" method="POST">
-
                         <a class="btn btn-primary" href="{{ route('pemesanans.edit',$pemesanan->id) }}">Detail</a>
-                        <a href="" class="btn btn-success">Print</a> 
-
-                        @csrf
-                        @method('DELETE')
-                    </form>
+                        <a href="{{-- {{ route('print', $pemesanans->id) }} --}}" class="btn btn-success">Print</a> 
                   </td>
                 </tbody>
               @endforeach
