@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Pemesanan;
 use App\Models\TipeKamar;
 use Illuminate\Http\Request;
-use PDF;
 
 class PemesananController extends Controller
 {

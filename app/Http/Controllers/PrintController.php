@@ -23,6 +23,6 @@ class PrintController extends Controller
 
         $pdf = PDF::loadView('user.pemesanans.print', $data);
 
-        return $pdf->download('struk-' . $data['id'] . '.pdf');
+        return $pdf->download('struk' . $data['id'] . '.pdf');
     }
 }
