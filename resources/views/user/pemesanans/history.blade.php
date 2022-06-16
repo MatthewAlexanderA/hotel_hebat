@@ -34,7 +34,7 @@ active
                   <td>{{ $pemesanan->tgl_check_out }}</td>
                   <td>
                         <a class="btn btn-primary" href="{{ route('pemesanans.edit',$pemesanan->id) }}">Detail</a>
-                        <a href="{{-- {{ url('/print', $pemesanan->id) }} --}}" class="btn btn-success">Print</a> 
+                        <a href="{{ url('print', $pemesanan->id) }}" class="btn btn-success">Print</a> 
                   </td>
                 </tbody>
               @endforeach

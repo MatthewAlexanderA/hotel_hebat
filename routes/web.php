@@ -41,7 +41,7 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('logout')->middleware('auth');
 
 Route::resource('pemesanans', PemesananController::class)->middleware('auth');
-Route::resource('print', PrintController::class)->middleware('auth');
+Route::get('print/{id}', [PrintController::class, 'generatePDF'])->middleware('auth');
 
 Route::resource('reservasi', ReservasiController::class)->middleware('resepsionis');
 

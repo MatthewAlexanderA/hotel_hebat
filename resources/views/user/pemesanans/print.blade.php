@@ -9,19 +9,21 @@
 <body>
     <div class="mt-3 card">
         <div class="card-body">
-            <h5 class="card-title">{{ $nama_pemesan }}</h5>
+            @foreach($pemesanan as $p)
+            <h5 class="card-title">{{ $p->nama_pemesan }}</h5>
             <p class="card-text">
-                Nama Tamu : {{ $nama_tamu }} <br>
-                Email : {{ $email }} <br>
-                No Telp : {{ $no_hp }} <br>
-                Tipe Kamar : {{ $tipe_kamar }}
-                Jumlah Kamar : {{ $jumlah_kamar }}
+                Nama Tamu : {{ $p->nama_tamu }} <br>
+                Email : {{ $p->email }} <br>
+                No Telp : {{ $p->no_hp }} <br>
+                Tipe Kamar : {{ $p->tipe_kamar }}
+                Jumlah Kamar : {{ $p->jumlah_kamar }}
             </p>
             <p class="card-text">
                 Informasi Reservasi <br>
-                Tanggal Check In : {{ $tgl_check_in }} <br>
-                Tanggal Check Out : {{ $tgl_check_out }} <hr>
+                Tanggal Check In : {{ $p->tgl_check_in }} <br>
+                Tanggal Check Out : {{ $p->tgl_check_out }} <hr>
             </p>
+            @endforeach
         </div>
     </div>      
 </body>
